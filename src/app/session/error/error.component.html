@@ -1,0 +1,13 @@
+<div class="session">
+    <div class="session-content text-xs-center">
+        <div>
+            <div class="error-title">500</div>
+            <div class="error-subtitle">We have an internal server error!</div>
+            <p class="mat-text-muted" [hidden]="!errorMessage">
+                {{errorMessage}}
+            </p>
+            <p [hidden]="!error403" class="mat-text-muted">You are not authorized to access this page.
+            </p>
+        </div>
+    </div>
+</div>

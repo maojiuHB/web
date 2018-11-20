@@ -1,0 +1,9 @@
+{
+    "IP": "192.168.1.111",
+    "SNAPSHOTS_URL": "http://192.168.1.111/snapshots/",
+    "PIC_URL": "http://192.168.1.111/pic/",
+    "UPLOAD_URL": "http://192.168.1.111/upload/",
+    "LIVE_URL": "rtmp://192.168.1.111:1935/live/",
+    "RECORD_URL": "http://192.168.1.111/recorde/",
+    "WS_URL": "http://192.168.1.111:8080/websocket/tracker/"
+}

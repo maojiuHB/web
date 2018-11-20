@@ -1,0 +1,228 @@
+@import "scss/material.variables";
+@import "scss/material.themes";
+@import "scss/mixins/bi-app/bi-app-ltr";
+// Core Variables and Mixins
+@import "scss/app.variables";
+@import "scss/mixins";
+// Core Styles
+@import "scss/core";
+@import "scss/material";
+@import "scss/utilities/utilities";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+.hiden-header-container {
+  height: 100%;
+  margin-top: -64px;
+  .ps {
+    padding: 0;
+  }
+}
+.hiden-header {
+  mat-toolbar {
+    transform: translateY(-100%);
+  }
+}
+// 自定义样式
+.error-snackbar {
+  background-color: rgba(255, 0, 0, 0.8);
+}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+// loading
+.loading-shade {
+  position: absolute;
+  top: 67px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rate-limit-reached {
+  color: #980000;
+  max-width: 360px;
+  text-align: center;
+}
+/* Table */
+.table-container {
+  position: relative;
+  .table {
+    position: relative;
+    background: #ffffff;
+    tr.mat-header-row {
+      height: 40px;
+    }
+    .mat-header-cell {
+      line-height: 40px;
+    }
+    .mat-cell {
+      line-height: 48px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      .people-avatar {
+        margin: 4px 0 4px 0;
+      }
+    }
+    .table-bb {
+      border-bottom-color: rgba(0, 0, 0, 0.12);
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+    }
+    .table-bl {
+      border-left-color: rgba(0, 0, 0, 0.12);
+      border-left-width: 1px;
+      border-left-style: solid;
+    }
+    .table-header {
+      margin: 0;
+      height: 36px;
+      padding: 20px 20px 11px 20px;
+      h2 {
+        margin: 0;
+        min-width: 60px;
+        float: left;
+        line-height: 36px;
+      }
+      .mat-flat-button {
+        float: right;
+      }
+      .mat-icon {
+        position: absolute;
+        left: 0;
+        top: 27px;
+        cursor: pointer;
+      }
+    }
+    .table-search {
+      padding: 10px 20px 0 20px;
+      .table-search-title {
+        font-size: 20px;
+        font-weight: 500;
+        margin-right: 20px;
+        display: inline;
+        vertical-align: middle;
+      }
+      .mat-icon {
+        position: absolute;
+        left: 0;
+        top: 27px;
+        cursor: pointer;
+      }
+      .mat-form-field {
+        margin-right: 10px;
+      }
+    }
+    .mat-table {
+      .mat-icon-button {
+        margin: 2px;
+      }
+    }
+  }
+  table {
+    width: 100%;
+  }
+}
+// 弹窗
+.dialog-defalut {
+  .dialog-table {
+    padding: 0;
+    margin: 0 !important;
+  }
+  .dialog-text {
+    margin-bottom: 10px;
+    a {
+      color: #980000;
+    }
+  }
+  .dialog-notice {
+    color: #980000;
+    max-width: 400px;
+  }
+  .mat-dialog-container {
+    padding: 0;
+  }
+  .dialog-header {
+    border-bottom-color: rgba(0, 0, 0, 0.12);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    height: 40px;
+    .mat-dialog-title {
+      width: 160px;
+      line-height: 40px;
+      float: left;
+    }
+    button {
+      float: right;
+      cursor: pointer;
+      line-height: 40px;
+    }
+  }
+  .mat-dialog-actions,
+  .dialog-header {
+    padding: 10px 20px 10px 20px;
+  }
+  .mat-dialog-content,
+  .mat-dialog-title,
+  .mat-dialog-container,
+  .mat-dialog-actions {
+    margin: 0;
+  }
+  .mat-dialog-content {
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    & > * {
+      width: 100%;
+    }
+    p {
+      padding-top: 20px;
+    }
+    margin-bottom: 10px;
+  }
+  .mat-dialog-actions {
+    border-top-color: rgba(0, 0, 0, 0.12);
+    border-top-width: 1px;
+    border-top-style: solid;
+    display: inline-block;
+    text-align: right;
+    width: calc(100% - 40px);
+    button {
+      margin-left: 10px;
+    }
+  }
+}
+
+// 开发中
+.building {
+  width: 100%;
+  height: 1024px;
+  background: url("http://images.javayuan.cn/building.gif") center center
+    no-repeat;
+}
+.br-0 {
+  border: 0;
+}
+.people-avatar {
+  flex-shrink: 0;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.app-dark {
+  .table-container .table {
+    background-color: #424242;
+  }
+}

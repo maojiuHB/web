@@ -1,0 +1,43 @@
+<div class="session mat-indigo">
+    <div class="session-content">
+        <div class="session-wrapper">
+            <mat-card>
+                <mat-card-content>
+                    <form name="editForm" role="form" novalidate #editForm="ngForm">
+                        <div class="text-xs-center">
+                            <h2>视网科技</h2>
+                            <p class="mat-text-muted" *ngIf="authenticationError">
+                                <strong style="color: #FF0000;">请检查用户名密码是否正确！</strong>
+                            </p>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign="space-around">
+                            <div class="pb-1">
+                                <mat-form-field style="width: 100%">
+                                    <input matInput name="username" id="username" placeholder="用户名" required
+                                        [(ngModel)]="username">
+                                </mat-form-field>
+                            </div>
+                            <div class="pb-1">
+                                <mat-form-field style="width: 100%">
+                                    <input matInput type="password" name="password" id="password" autocomplete
+                                        placeholder="密码" required [(ngModel)]="password">
+                                </mat-form-field>
+                            </div>
+                            <div class="pb-1">
+                                <mat-checkbox name="rememberMe" id="rememberMe" [(ngModel)]="rememberMe">保持登录
+                                </mat-checkbox>
+                            </div>
+                            <button mat-raised-button color="primary" type="submit" (click)="login()" [disabled]="isLogin|| !editForm.form.valid">登录
+                            </button>
+                        </div>
+                        <div class="text-xs-center">
+                            <p class="mat-text-muted">
+                                    ©2018 <a href="https://www.videon.cn" target="_blank">北京视网科技有限公司</a>
+                            </p>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

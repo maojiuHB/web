@@ -1,0 +1,33 @@
+<div class="dialog-header">
+    <h2 matDialogTitle>{{ baseName(currentHealth.name) }}&nbsp;{{subSystemName(currentHealth.name)}}</h2>
+    <button mat-icon-button matDialogClose>
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<div matDialogContent class="table-container dialog-table">
+    <div class="table">
+        <table mat-table [dataSource]="currentHealth.details.details | keys">
+            <!-- key Column -->
+            <ng-container matColumnDef="key">
+                <th mat-header-cell *matHeaderCellDef> 名称</th>
+                <td mat-cell *matCellDef="let element"> {{element.key}} </td>
+            </ng-container>
+
+            <!-- value Column -->
+            <ng-container matColumnDef="value">
+                <th mat-header-cell *matHeaderCellDef> 值 </th>
+                <td mat-cell *matCellDef="let element"> {{readableValue(element.value)}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>
+<div matDialogContent *ngIf="currentHealth.error">
+    <h4>Error</h4>
+    <pre>{{currentHealth.error}}</pre>
+</div>
+<div matDialogActions>
+    <button mat-raised-button mat-button-sm matDialogClose color="primary">取消</button>
+</div>

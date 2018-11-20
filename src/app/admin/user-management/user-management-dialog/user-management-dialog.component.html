@@ -1,0 +1,44 @@
+<form name="editForm" role="form" novalidate #editForm="ngForm">
+  <div class="dialog-header">
+    <h2 matDialogTitle>{{operation=='show'?'查看':operation=='add'?'新建':operation=='edit'?'修改':operation=='del'?'删除':''}}用户</h2>
+    <button mat-icon-button matDialogClose>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div matDialogContent *ngIf="operation!='del'">
+    <mat-form-field>
+      <input matInput placeholder="用户名" required type="text" name="login" id="login" [(ngModel)]="user.login"
+        [disabled]="operation!='add'">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="权限" required multiple name="authorities" id="authorities" [(ngModel)]="user.authorities"
+        [disabled]="operation=='show'">
+        <mat-option *ngFor="let authority of authorities" [value]="authority">{{authority}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="operation=='add'||operation=='edit'">
+      <input matInput [placeholder]="operation=='edit'?'新密码':'密码'" type="password" name="password" id="password"
+        [(ngModel)]="user.password" [required]="operation=='add'">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="邮箱" type="email" name="email" id="email" [(ngModel)]="user.email" [disabled]="operation=='show'">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="名字" type="text" name="firstName" id="firstName" [(ngModel)]="user.firstName"
+        [disabled]="operation=='show'">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="姓氏" type="text" name="lastName" id="lastName" [(ngModel)]="user.lastName" [disabled]="operation=='show'">
+    </mat-form-field>
+  </div>
+  <div matDialogContent *ngIf="operation=='del'">
+    <p>确定删除 {{user.login}}?</p>
+  </div>
+  <div matDialogActions>
+    <button mat-raised-button mat-button-sm color="warn" [disabled]="isSaving|| !editForm.form.valid" (click)="save()"
+      *ngIf="operation=='add'||operation=='edit'">确定</button>
+    <button mat-raised-button mat-button-sm color="accent" (click)="operation='edit'" *ngIf="operation=='show'">修改</button>
+    <button mat-raised-button mat-button-sm color="warn" (click)="delete()" *ngIf="operation=='del'">删除</button>
+    <button mat-raised-button mat-button-sm matDialogClose color="primary">取消</button>
+  </div>
+</form>

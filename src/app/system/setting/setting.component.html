@@ -1,0 +1,63 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row></mat-toolbar-row>
+    <mat-toolbar-row></mat-toolbar-row>
+</mat-toolbar>
+
+<div fxLayout="row wrap" fxLayoutAlign="center start">
+    <div fxFlex.gt-sm="55" fxFlex="100">
+        <mat-card class="mat-card-top pa-0">
+            <mat-tab-group>
+                <mat-tab>
+                    <form name="form" role="form" (ngSubmit)="save()" #settingsForm="ngForm" *ngIf="settingsAccount"
+                        novalidate>
+                        <ng-template matTabLabel>基本信息</ng-template>
+                        <mat-card-content class="pa-1" fxLayout="column">
+                            <mat-form-field class="mb-1">
+                                <input type="text" matInput id="firstName" name="firstName" placeholder="名字"
+                                    [(ngModel)]="settingsAccount.firstName" minlength=1 maxlength=50>
+                            </mat-form-field>
+
+                            <mat-form-field class="mb-1">
+                                <input type="text" matInput id="lastName" name="lastName" placeholder="姓氏" [(ngModel)]="settingsAccount.lastName"
+                                    minlength=1 maxlength=50>
+                            </mat-form-field>
+
+                            <mat-form-field class="mb-1">
+                                <input type="email" matInput id="email" name="email" placeholder="邮箱地址" [(ngModel)]="settingsAccount.email"
+                                    minlength="5" maxlength="254">
+                            </mat-form-field>
+                            <mat-progress-bar mode="indeterminate" *ngIf="isSaving"></mat-progress-bar>
+                            <div>
+                                <button mat-flat-button class="shadow-none" [disabled]="isSaving || settingsForm.form.invalid">保存</button>
+                            </div>
+                        </mat-card-content>
+                    </form>
+                </mat-tab>
+                <mat-tab>
+                    <form name="passwordForm" role="form" (ngSubmit)="changePassword()" #passwordForm="ngForm"
+                        novalidate>
+                        <ng-template matTabLabel>密码设置</ng-template>
+                        <mat-card-content class="pa-1" fxLayout="column">
+                            <mat-form-field class="mb-1">
+                                <input matInput placeholder="原密码" id="currentPassword" name="currentPassword" type="password"
+                                    [(ngModel)]="currentPassword" autocomplete required>
+                            </mat-form-field>
+                            <mat-form-field class="mb-1">
+                                <input matInput placeholder="新密码" id="newPassword" name="newPassword" [(ngModel)]="newPassword"
+                                    type="password" autocomplete required>
+                            </mat-form-field>
+                            <mat-form-field class="mb-1">
+                                <input matInput placeholder="确认密码" id="confirmPassword" name="confirmPassword"
+                                    [(ngModel)]="confirmPassword" type="password" autocomplete required>
+                            </mat-form-field>
+                            <mat-progress-bar mode="indeterminate" *ngIf="isSaving"></mat-progress-bar>
+                            <div>
+                                <button mat-flat-button class="shadow-none" [disabled]="isSaving || passwordForm.form.invalid||(newPassword !== confirmPassword)">保存</button>
+                            </div>
+                        </mat-card-content>
+                    </form>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card>
+    </div>
+</div>
